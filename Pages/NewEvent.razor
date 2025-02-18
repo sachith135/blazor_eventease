@@ -1,0 +1,21 @@
+@code {
+    private EventModel eventData = new EventModel();
+}
+
+<EditForm Model="eventData" OnValidSubmit="SaveEvent">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <input @bind="eventData.Title" placeholder="Enter event title" required />
+    <input type="date" @bind="eventData.Date" required />
+    <input @bind="eventData.Location" placeholder="Enter location" required />
+    
+    <button type="submit">Save</button>
+</EditForm>
+
+@code {
+    private void SaveEvent()
+    {
+        Console.WriteLine($"Event Saved: {eventData.Title}");
+    }
+}

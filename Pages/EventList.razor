@@ -1,0 +1,21 @@
+@page "/events"
+
+<h3>Event List</h3>
+
+@foreach (var eventItem in events)
+{
+    <div>
+        <h4>@eventItem.Title</h4>
+        <p>@eventItem.Date.ToShortDateString()</p>
+        <p>@eventItem.Location</p>
+        <a href="/event/@eventItem.Id">View Details</a>
+    </div>
+}
+
+@code {
+    private List<EventModel> events = new List<EventModel>
+    {
+        new EventModel { Title = "Tech Conference", Date = DateTime.Now, Location = "New York" },
+        new EventModel { Title = "Business Meetup", Date = DateTime.Now.AddDays(5), Location = "San Francisco" }
+    };
+}

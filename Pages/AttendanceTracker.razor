@@ -1,0 +1,26 @@
+@page "/attendance"
+
+<h3>Attendance Tracker</h3>
+<input @bind="attendeeName" placeholder="Enter Name" />
+<button @onclick="AddAttendee">Add</button>
+
+<ul>
+    @foreach (var attendee in attendees)
+    {
+        <li>@attendee</li>
+    }
+</ul>
+
+@code {
+    private List<string> attendees = new();
+    private string attendeeName;
+
+    private void AddAttendee()
+    {
+        if (!string.IsNullOrEmpty(attendeeName))
+        {
+            attendees.Add(attendeeName);
+            attendeeName = "";
+        }
+    }
+}
